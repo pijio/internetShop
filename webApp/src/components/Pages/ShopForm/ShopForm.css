@@ -51,8 +51,20 @@
     color: #ffffff;
     border-radius: 50px;
 }
-
-.card .row .form-group label {
+.label-form {
+    font-size: 16px;
+    width: 100%;
+    color: #ffffff;
+    margin: 0 0 0 30px;
+    line-height: 40px;
+}
+.input {
+    pointer-events: all;
+}
+.selected__gods {
+    transform: translateY(-100px);
+}
+.card .row .form-group {
     line-height: 40px;
     color: #ffffff;
     font-size: 24px;

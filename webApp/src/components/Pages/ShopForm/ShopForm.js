@@ -21,7 +21,7 @@ const ShopForm = () => {
 
     return (
         <form target={'_blank'}
-              action={'https://docs.google.com/forms/d/e/1FAIpQLScoQmMotRKXb2NSf6F3a0ON36UJyl4MSG5QdoFdMnSpDWh_Tg/formResponse'}
+              action={''}
               className="card">
             <Link to={'/'}>
                 <img className={'toHome__Button1'} src="https://cdn-icons-png.flaticon.com/512/6298/6298551.png"
@@ -31,39 +31,39 @@ const ShopForm = () => {
             <div className="row">
                 <div className="col">
                     <div className="form-group">
-                        <label>Ваше Имя</label>
-                        <input aria-describedby="i4" name="entry.410786545" required={true} type="text"/>
+                        <label className="label-form">Ваше Имя</label>
+                        <input required={true} className="input" type="text"/>
                     </div>
                 </div>
 
-                <div className="col">
+                <div className="col selected__gods">
                     <div className="form-group">
-                        <label>Выбранные товары ({totalCount})</label>
-                        <textarea aria-describedby="i12" name="entry.462709995" readOnly type="text"
+                        <label className="label-form">Выбранные товары ({totalCount})</label>
+                        <textarea readOnly type="text"
                                   value={goodsItems}/>
                     </div>
                 </div>
 
                 <div className="col">
                     <div className="form-group">
-                        <label>Телефон</label>
-                        <input aria-describedby="i8" name="entry.1366590193" required={true} type="tel"/>
+                        <label className="label-form">Телефон</label>
+                        <input required={true} className="input" type="tel"/>
                     </div>
                 </div>
 
                 <div className="col">
                     <div className="form-group">
-                        <label>Общая сумма заказа</label>
-                        <input aria-describedby="i16" name="entry.635165254" readOnly value={`${totalPrice} сом`}
+                        <label className="label-form">Общая сумма заказа</label>
+                        <input name="entry.635165254" readOnly value={`${totalPrice} сом`}
                                type="text"/>
                     </div>
                 </div>
 
                 <div className="col">
                     <div className="form-group">
-                        <label>Адрес доставки и <br/>комментарий к заказу</label>
-                        <textarea autoComplete={'Введите Ваш адрес'} required={true} name="entry.46350536"
-                                  aria-describedby="i20"></textarea>
+                        <label className="label-form">Адрес доставки и комментарий к заказу</label>
+                        <textarea autoComplete={'Введите Ваш адрес'} required={true} className="input"
+                                  ></textarea>
                     </div>
                 </div>
 

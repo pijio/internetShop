@@ -1,11 +1,12 @@
 const initialState = {
-items : [],
-    isLoaded : false
+    items: [],
+    isLoaded: false
 }
 
-const goodsReducer = (state=initialState,action)=>{
+const goodsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_GOODS' :
+            console.log("getall");
             return {
                 ...state,
                 items: action.payload,
@@ -16,11 +17,10 @@ const goodsReducer = (state=initialState,action)=>{
                 ...state,
                 isLoaded: action.payload,
             }
-        default : return state
+        default :
+            return state
     }
 
 }
-
-
 
 export default goodsReducer

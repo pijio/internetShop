@@ -76,6 +76,11 @@ namespace InternetShop.DAL
                 await _dbSet.AddRangeAsync(entities);
             }
 
+            public async Task<IQueryable<TEntity>> GetAllAsync()
+            {
+                return GetAll();
+            }
+
             public bool Any(Expression<Func<TEntity, bool>> expression = null) => _dbSet.Any(expression);
             
         }

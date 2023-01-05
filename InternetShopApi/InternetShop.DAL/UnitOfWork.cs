@@ -5,13 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InternetShop.DAL
 {
-    public class UnitOfWork<TContext> : IUnitOfWork<TContext>, IDisposable where TContext : DbContext
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         protected readonly ConcurrentDictionary<Type, object> _repsDictionary;
-        protected DbContext _dbContext;
+        protected InternetShopDbContext _dbContext;
         public UnitOfWork(InternetShopDbContext dbContext)
         {
             _dbContext = dbContext;
+            _repsDictionary = new ConcurrentDictionary<Type, object>();
         }
 
         public IGenericRepository<TEntity> GetGenericRepository<TEntity>()

@@ -8,7 +8,5 @@ const rootReducer = combineReducers({
     filters,
     goods,
     detail,
-
-
 })
 export default rootReducer

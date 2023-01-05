@@ -5,12 +5,14 @@ using InternetShop.Api.Services;
 using System.Threading.Tasks;
 using InternetShop.Api.CustomLogger;
 using InternetShop.Api.Infrastructure;
+using InternetShop.DAL;
 using InternetShop.SiteApp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -42,9 +44,21 @@ namespace InternetShop.Api
                 s.SwaggerDoc("v1", new OpenApiInfo { Title = "Internet shop API", Version = "v1" });
                 s.CustomSchemaIds(x=> x.FullName);
             });
+            services.AddDbContext<InternetShopDbContext>(opt =>
+            {
+                opt.UseNpgsql(Configuration.GetSection("ConnectionStrings")["PostgreSql"]);
+            });
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddConfiguration(Configuration);
             services.AddCustomerLogger();
             services.AddSiteApp();
+            services.AddCors(o => o.AddPolicy("ShopApiPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
         }
 
         // Конвеер запросов, подключение мидлвар компонентов
@@ -69,7 +83,7 @@ namespace InternetShop.Api
             app.UseRouting();
 
             app.UseAuthorization();
-            
+            app.UseCors("ShopApiPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

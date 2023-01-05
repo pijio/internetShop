@@ -6,16 +6,17 @@ export const setLoaded = payload =>({
 })
 export const fetchGoods = (category,sortBy)=>(dispatch)=>{
     dispatch(setLoaded(false))
+    var baseurl = "https://localhost:5001"
     if (category===null&&sortBy===2){
         return (
-            axios.get(`/ISGoods?inStock=true`).then(({data})=>{
+            axios.get(baseurl+'/shop/products').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
     }
     if (category===null&&sortBy===1){
         return (
-            axios.get(`/ISGoods?_sort=price&_order=asc`).then(({data})=>{
+            axios.get(baseurl+'/shop/products').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
@@ -23,7 +24,7 @@ export const fetchGoods = (category,sortBy)=>(dispatch)=>{
 
     if (category===null&&sortBy===0){
         return (
-            axios.get(`/ISGoods?_sort=popular&_order=desc`).then(({data})=>{
+            axios.get(baseurl+'/shop/products').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
@@ -32,21 +33,21 @@ export const fetchGoods = (category,sortBy)=>(dispatch)=>{
 
     if (sortBy===2){
         return (
-            axios.get(`/ISGoods?key=${category }&inStock=true`).then(({data})=>{
+            axios.get(baseurl+'/shop/products').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
     }
     if (sortBy===1){
         return (
-            axios.get(`/ISGoods?key=${category}&_sort=price&_order=asc`).then(({data})=>{
+            axios.get(baseurl+'/shop/products').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
     }
     if (sortBy===0){
         return (
-            axios.get(`/ISGoods?key=${category}&_sort=popular&_order=desc`).then(({data})=>{
+            axios.get(baseurl+'/shop/products').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )

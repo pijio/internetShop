@@ -30,6 +30,9 @@ namespace InternetShop.DAL
         Task AddAsync(TEntity entity);
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
+        
+        Task<IQueryable<TEntity>> GetAllAsync();
+
 
         bool Any(Expression<Func<TEntity, bool>> expression = null);
     }

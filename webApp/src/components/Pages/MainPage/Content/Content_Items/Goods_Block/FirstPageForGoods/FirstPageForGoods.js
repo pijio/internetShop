@@ -78,8 +78,9 @@ const Noteboks = ({
                         </ul>
                         <ul>
                             <li> {os} {dpi} </li>
-                            <li> {category} {format} </li>
-                            <li> {disc} {printer_ram} </li>
+                            <li> {category} </li>
+                            <li> {disc}{printer_ram} </li>
+                            <li>{format}</li>
                         </ul>
                     </div>
                     <div className="pizza-block__bottom">

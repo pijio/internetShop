@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace InternetShop.DAL
 {
@@ -8,22 +6,34 @@ namespace InternetShop.DAL
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductAdditInfo> ProductAdditInfos { get; set; }
-        public DbSet<Characteristics> ProductsChararcteristics { get; set; }
-        private IConfiguration _configuration;
-        public InternetShopDbContext(DbContextOptions<InternetShopDbContext> options, IConfiguration configuration) : base(options)
-        {           
-            _configuration = configuration;
-            Database.EnsureCreated();
+        public DbSet<Characteristics> ProductsCharacteristics { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public InternetShopDbContext(DbContextOptions<InternetShopDbContext> options) : base(options)
+        {
         }
+        
         protected override void OnModelCreating(ModelBuilder builder)
-        {            
-            builder.ApplyConfigurationsFromAssembly(typeof(InternetShopDbContext).Assembly);
+        {
+            MapKeys(builder);
+            MapIdentityColumns(builder);
             base.OnModelCreating(builder);
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        
+        private void MapKeys(ModelBuilder builder)
         {
-            optionsBuilder.UseNpgsql(_configuration.GetSection("ConnectionStrings")["PostgreSql"]);
+            builder.Entity<Product>().HasKey(k => new { k.ProductId });
+            builder.Entity<ProductAdditInfo>().HasKey(k => new { k.InfoId });
+            builder.Entity<Characteristics>().HasKey(k => new { k.CharactId });
+            builder.Entity<Category>().HasKey(k => new { k.Id });
+        }
+
+        private void MapIdentityColumns(ModelBuilder builder)
+        {
+            builder.Entity<Product>().Property(x => x.ProductId).ValueGeneratedOnAdd();
+            builder.Entity<Characteristics>().Property(x => x.CharactId).ValueGeneratedOnAdd();
+            builder.Entity<ProductAdditInfo>().Property(x => x.InfoId).ValueGeneratedOnAdd();
+            builder.Entity<Category>().Property(x => x.Id).ValueGeneratedOnAdd();
+
         }
     }
 }

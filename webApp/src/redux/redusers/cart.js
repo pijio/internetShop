@@ -1,34 +1,30 @@
-
-
 const initialState = {
-    items :{},
+    items: {},
     totalPrice: 0,
-    totalCount:0
+    totalCount: 0
 }
 
 
-
-
-const cartReducer = (state=initialState,action)=>{
+const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_GOODS_CART' : {
             const newItems = {
                 ...state.items,
                 [action.payload.id]: !state.items[action.payload.id]
-                    ?[action.payload]
-                    :[...state.items[action.payload.id],action.payload ]
+                    ? [action.payload]
+                    : [...state.items[action.payload.id], action.payload]
             }
 
-            const allGoods = [].concat.apply([],Object.values(newItems));
-            const newTotalPrice =allGoods.reduce((sum,obj)=>obj.price+sum,0)
+            const allGoods = [].concat.apply([], Object.values(newItems));
+            const newTotalPrice = allGoods.reduce((sum, obj) => obj.price + sum, 0)
             return {
                 ...state,
                 items: newItems,
                 totalCount: allGoods.length,
                 totalPrice: newTotalPrice
-        }
             }
-        case 'CLEAR_CART':{
+        }
+        case 'CLEAR_CART': {
             return {
                 ...state,
                 items: action.payload,
@@ -36,13 +32,13 @@ const cartReducer = (state=initialState,action)=>{
                 totalCount: 0
             }
         }
-        case 'REMOVE_GOODS':{
-            const newItems  ={
+        case 'REMOVE_GOODS': {
+            const newItems = {
                 ...state.items,
             }
             delete newItems[action.payload];
-            const allGoods = [].concat.apply([],Object.values(newItems));
-            const newTotalPrice =allGoods.reduce((sum,obj)=>obj.price+sum,0);
+            const allGoods = [].concat.apply([], Object.values(newItems));
+            const newTotalPrice = allGoods.reduce((sum, obj) => obj.price + sum, 0);
             return {
                 ...state,
                 items: newItems,
@@ -51,13 +47,13 @@ const cartReducer = (state=initialState,action)=>{
 
             }
         }
-        case 'MINUS_ITEM':{
-            const newItems  ={
+        case 'MINUS_ITEM': {
+            const newItems = {
                 ...state.items,
             }
-            newItems[action.payload].splice([0],[1]);
-            const allGoods = [].concat.apply([],Object.values(newItems));
-            const newTotalPrice =allGoods.reduce((sum,obj)=>obj.price+sum,0);
+            newItems[action.payload].splice([0], [1]);
+            const allGoods = [].concat.apply([], Object.values(newItems));
+            const newTotalPrice = allGoods.reduce((sum, obj) => obj.price + sum, 0);
             return {
                 ...state,
                 items: newItems,
@@ -67,10 +63,9 @@ const cartReducer = (state=initialState,action)=>{
             }
         }
 
-        default : return state
+        default :
+            return state
     }
 }
-
-
 
 export default cartReducer

@@ -23,5 +23,18 @@ namespace InternetShop.Api.Services
         {
             services.AddSingleton<IConfiguration>(finalConfig);
         }
+        /// <summary>
+        /// cors
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddCorsPolicy(this IServiceCollection services)
+        {
+            return services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder => builder.SetIsOriginAllowed(_ => true)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()));
+        }
     }
 }

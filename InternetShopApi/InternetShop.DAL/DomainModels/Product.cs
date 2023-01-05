@@ -1,12 +1,19 @@
 ﻿namespace InternetShop.DAL
 {
-    public class Product
+    public class Product : IBaseEntity
     {
-        public int Id { get; set; }
-        public int InStock { get; set; }
+        public int ProductId { get; set; }
+        public bool InStock { get; set; }
         public int Key { get; set; }
         public string Name { get; set; }
         public double Rate { get; set; }
         public string Title { get; set; }
+        public int CharactId { get; set; }
+        public double Price { get; set; }
+        public Characteristics Characteristics { get; set; }
+        public int InfoId { get; set; }
+        public ProductAdditInfo AdditInfo { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -1,11 +1,18 @@
-﻿using InternetShop.Api.CustomLogger;
+﻿using System;
+using System.Threading.Tasks;
+using InternetShop.Api.CustomLogger;
+using InternetShop.Api.RepresentationModels;
+using InternetShop.DAL;
+using InternetShop.SiteApp.Commands.GetProductsList;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 
 namespace InternetShop.Api.Controllers
 {
     [ApiController]
+    [EnableCors("ShopApiPolicy")]
     [Route("/shop")]
     public class ShopController : ControllerBase
     {
@@ -16,6 +23,12 @@ namespace InternetShop.Api.Controllers
         {
             _mediator = mediator;
             _logManger = logger.Manager;
+        }
+        
+        [HttpGet("products")]
+        public async Task<ProductModel[]> GetProducts()
+        {
+            return Array.ConvertAll(await _mediator.Send(new GetProductsQuery()), item => (ProductModel)item);
         }
     }
 }
