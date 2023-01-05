@@ -1,0 +1,86 @@
+.page__for__goods {
+    color: #0E4094;
+    font-weight: bold;
+    margin: 20px;
+   cursor: pointer;
+    font-size: 20px;
+}
+.page__for__goods:hover {
+    color: #4169E1;
+}
+.pages__for__goods {
+    /*position: absolute;*/
+    /*left: 35%;*/
+    /*bottom: 54px;*/
+    text-align: center;
+    transform: translate(0px, -20px);
+    /*text-align: center;*/
+    /*transform: translate(0px, -20px);*/
+
+}
+.page__for__goods__pointer__none {
+    color:gray ;
+}
+
+#menu_checkbox {
+    display: none;
+}
+
+label {
+    margin-left: 10px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    transition: 0.3s ease transform;
+    cursor: pointer;
+}
+
+label div {
+    width: 6px;
+    height: 6px;
+    background-color: #143240;
+    margin-left: 0;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    transition: 0.3s ease width, 0.3s ease margin-left, 0.3s ease margin-bottom,
+    0.3s ease background-color;
+}
+
+label div:first-child {
+    width: 22px;
+}
+
+label div:nth-child(2) {
+    width: 15px;
+}
+
+label div:last-child {
+    width: 30px;
+    margin-bottom: 0;
+}
+
+#menu_checkbox:checked + label {
+    transform: translateY(-50%) rotateZ(-90deg);
+}
+
+#menu_checkbox:checked + label div {
+    width: 6px;
+    margin-left: 12px;
+    margin-bottom: 3px;
+    background-color: #4169E1;
+}
+.categoties__button {
+    display: inline-block;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: #0E4094;
+}
+.categoties__button b {
+    color: #0E4094;
+}
+.disabled {
+    position: absolute;
+    opacity: 0.0;
+}

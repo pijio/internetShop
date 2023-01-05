@@ -39,7 +39,7 @@ namespace InternetShop.Api
             services.AddControllers();
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1", new OpenApiInfo { Title = "DivisionCraft Site API", Version = "v1" });
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "Internet shop API", Version = "v1" });
                 s.CustomSchemaIds(x=> x.FullName);
             });
             services.AddConfiguration(Configuration);

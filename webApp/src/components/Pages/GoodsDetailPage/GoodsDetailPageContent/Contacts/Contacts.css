@@ -1,0 +1,32 @@
+.contact__block {
+    display: none;
+    transform: translate(90px, 55px);
+    border: 5px #18b9d4 solid;
+    left: 40%;
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    background-color: white;
+    text-align: center;
+}
+.active__contact {
+    display: inline-block;
+}
+.contact__infoblock {
+    display: flex;
+    justify-content: center;
+
+}
+.contact__infoblock img {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 42px;
+    height: 42px;
+}
+.span__bold {
+    font-weight: bold;
+    color: #0E4094;
+}
+.contact__us {
+    color: #0E4094;
+}
