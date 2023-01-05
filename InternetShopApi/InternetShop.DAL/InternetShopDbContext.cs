@@ -1,17 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace InternetShop.DAL
 {
-    public class InternetShopDbContext : DbContext
+    public sealed class InternetShopDbContext : DbContext
     {
-        public InternetShopDbContext(DbContextOptions<InternetShopDbContext> options) : base(options)
-        {
-            
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductAdditInfo> ProductAdditInfos { get; set; }
+        public DbSet<Characteristics> ProductsChararcteristics { get; set; }
+        private IConfiguration _configuration;
+        public InternetShopDbContext(DbContextOptions<InternetShopDbContext> options, IConfiguration configuration) : base(options)
+        {           
+            _configuration = configuration;
+            Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+        {            
             builder.ApplyConfigurationsFromAssembly(typeof(InternetShopDbContext).Assembly);
+            base.OnModelCreating(builder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql(_configuration.GetSection("ConnectionStrings")["PostgreSql"]);
         }
     }
 }
