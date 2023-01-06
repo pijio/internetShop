@@ -8,6 +8,7 @@ namespace InternetShop.DAL
         public DbSet<ProductAdditInfo> ProductAdditInfos { get; set; }
         public DbSet<Characteristics> ProductsCharacteristics { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
         public InternetShopDbContext(DbContextOptions<InternetShopDbContext> options) : base(options)
         {
         }
@@ -21,6 +22,7 @@ namespace InternetShop.DAL
         
         private void MapKeys(ModelBuilder builder)
         {
+            builder.Entity<User>().HasKey(k => new { k.Id });
             builder.Entity<Product>().HasKey(k => new { k.ProductId });
             builder.Entity<ProductAdditInfo>().HasKey(k => new { k.InfoId });
             builder.Entity<Characteristics>().HasKey(k => new { k.CharactId });
@@ -33,6 +35,8 @@ namespace InternetShop.DAL
             builder.Entity<Characteristics>().Property(x => x.CharactId).ValueGeneratedOnAdd();
             builder.Entity<ProductAdditInfo>().Property(x => x.InfoId).ValueGeneratedOnAdd();
             builder.Entity<Category>().Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Entity<User>().Property(k =>  k.Id ).ValueGeneratedOnAdd();
+
 
         }
     }

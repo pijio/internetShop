@@ -5,6 +5,7 @@ using InternetShop.Api.Services;
 using System.Threading.Tasks;
 using InternetShop.Api.CustomLogger;
 using InternetShop.Api.Infrastructure;
+using InternetShop.Api.Services.AAS;
 using InternetShop.DAL;
 using InternetShop.SiteApp;
 using Microsoft.AspNetCore.Builder;
@@ -58,6 +59,7 @@ namespace InternetShop.Api
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
+            services.AddScoped<AAService, AAService>();
 
         }
 
@@ -79,9 +81,11 @@ namespace InternetShop.Api
                 app.UseHsts();
                 app.UseMiddleware<ErrorHandlingMiddleware>();
             }
+
+            app.UseMiddleware<JwtMiddleware>();
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            
             app.UseAuthorization();
             app.UseCors("ShopApiPolicy");
             app.UseEndpoints(endpoints =>

@@ -29,7 +29,7 @@ const Content = ({items, onClickItem}) => {
 
     return (
         <>
-            <div className="content">
+            <div className="content_goods">
                 <div className="container">
                     <div className="content__top">
                         <div className="categories">

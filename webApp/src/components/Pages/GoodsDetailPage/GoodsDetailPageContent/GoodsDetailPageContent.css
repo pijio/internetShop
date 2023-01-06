@@ -16,6 +16,7 @@
 }
 .photo{
     max-width: 500px;
+    max-height: 400px;
     width: 80%;
     height: 80%;
     margin-bottom: 30px;
@@ -72,6 +73,9 @@
     display: flex;
 }
 .content_cart {
+    display: flex;
+}
+.content_goods {
     display: flex;
 }
 .quantity {
@@ -179,5 +183,18 @@
 @media screen and (max-width: 960px) {
     .content {
         min-height: 800px;
+        flex-direction: column;
+        height: 1100px;
+    }
+    .mh {
+        max-height: 100%;
+    }
+    .mini__photos {
+        justify-content: space-around;
+    }
+}
+@media screen and (max-width: 620px) {
+    .mini__photos {
+        flex-wrap: wrap;
     }
 }
