@@ -4,7 +4,8 @@
     {
         public int ProductId { get; set; }
         public bool InStock { get; set; }
-        public int Key { get; set; }
+        public int ProductTypeID { get; set; }
+        public ProductType ProductType { get; set; }
         public string Name { get; set; }
         public double Rate { get; set; }
         public string Title { get; set; }

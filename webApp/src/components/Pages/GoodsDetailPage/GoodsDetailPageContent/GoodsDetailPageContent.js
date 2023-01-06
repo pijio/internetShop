@@ -22,7 +22,12 @@ const GoodsDetailPageContent = ({
                                     inStock,
                                     title,
                                     popular,
-                                    disc
+                                    disc,
+                                    printer_ram,
+                                    dpi,
+                                    type,
+                                    format,
+                                    ppm
                                 }) => {
 
     const {sortBy} = useSelector(({filters}) => filters);
@@ -147,13 +152,17 @@ const GoodsDetailPageContent = ({
                         <h4 className="harakteristics margin10px">
                             Характеристики
                         </h4>
-                        <p className="p__harakreristics boldHar margin10px">
-                            {processor ? `Процессор: ${processor}` : ''}
-                            <br/>{screenSizes ? `Диагональ экрана: ${screenSizes}` : ''}
-                            <br/> {ram ? `ОЗУ: ${ram}` : ''} <br/>
-                            {disc ? `Память: ${disc}` : ''} <br/> {os ? `Операционка: ${os}` : ''} <br/> Видеократа :
-                            Дискретная
-                        </p>
+                        <p className="p__harakreristics boldHar"> {processor ? `Процессор: ${processor}`  : ''} </p>
+                        <p className="p__harakreristics boldHar"> {screenSizes ? `Диагональ экрана: ${screenSizes}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {ram ? `ОЗУ: ${ram}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {disc ? `Память: ${disc}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {os ? `Операционка: ${os}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {printer_ram ? `ОЗУ: ${printer_ram}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {dpi ? `DPI: ${dpi}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {type ? `Тип: ${type}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {format ? `Формат: ${format}` : ''} </p>
+                        <p className="p__harakreristics boldHar"> {ppm ? `Дополнительно: ${ppm}` : ''} </p>
+
                         <div className="star__rating margin10px">
                             <p className={'bold'}>Рейтинг покупателей : </p>
                             {'⭐'.repeat(popular)}</div>

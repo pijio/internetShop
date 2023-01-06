@@ -7,9 +7,14 @@ export const setLoaded = payload =>({
 export const fetchGoods = (category,sortBy)=>(dispatch)=>{
     dispatch(setLoaded(false))
     var baseurl = "https://localhost:5001"
-    if (category===null&&sortBy===2){
+    console.log(`${baseurl}/shop/filtredProducts?category=${category!=null ? category : ""}&order=${sortBy}&direction=false`);
+    return (
+        axios.get(`${baseurl}/shop/filtredProducts?category=${category!=null ? category : ""}&order=${sortBy}&direction=false`).then(({data})=>{
+            dispatch(setGoods(data))
+        }).catch(error=>console.log('Интернет включи')));
+/*    if (category===null&&sortBy===2){
         return (
-            axios.get(baseurl+'/shop/products').then(({data})=>{
+            axios.get(baseurl+'/shop/filtredProducts?').then(({data})=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
@@ -51,7 +56,7 @@ export const fetchGoods = (category,sortBy)=>(dispatch)=>{
                 dispatch(setGoods(data))
             }).catch(error=>console.log('Интернет включи'))
         )
-    }
+    }*/
 }
 export const setGoods = (items)=>({
     type:'SET_GOODS',

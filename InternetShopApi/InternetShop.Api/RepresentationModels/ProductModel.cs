@@ -60,7 +60,7 @@ namespace InternetShop.Api.RepresentationModels
             var model = new ProductModel();
             model.Id = product.ProductId;
             model.InStock = product.InStock;
-            model.Key = product.Key;
+            model.Key = product.ProductTypeID;
             if (product.AdditInfo != null)
             {
                 model.ImageUrl = product.AdditInfo.ImageUrl;

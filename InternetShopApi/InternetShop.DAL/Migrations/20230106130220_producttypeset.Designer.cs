@@ -3,15 +3,17 @@ using System;
 using InternetShop.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InternetShop.DAL.Migrations
 {
     [DbContext(typeof(InternetShopDbContext))]
-    partial class InternetShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230106130220_producttypeset")]
+    partial class producttypeset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,8 +129,6 @@ namespace InternetShop.DAL.Migrations
 
                     b.HasIndex("CharacteristicsCharactId");
 
-                    b.HasIndex("ProductTypeID");
-
                     b.ToTable("Products");
                 });
 
@@ -211,19 +211,11 @@ namespace InternetShop.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("CharacteristicsCharactId");
 
-                    b.HasOne("InternetShop.DAL.ProductType", "ProductType")
-                        .WithMany()
-                        .HasForeignKey("ProductTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("AdditInfo");
 
                     b.Navigation("Category");
 
                     b.Navigation("Characteristics");
-
-                    b.Navigation("ProductType");
                 });
 #pragma warning restore 612, 618
         }

@@ -28,6 +28,7 @@ const GoodsDetailPage = () => {
                 {items.filter((item) => {
                     return item.id === detail
                 }).map((obj) => (
+
                     <GoodsDetailPageContent key={obj.id} {...obj}/>
                 ))}
                 <div className={'footer__contacts'}>
