@@ -2,7 +2,7 @@ version: '1.0'
 
 services:
   prodapi:
-    image: prod/internetshop
+    image: pijio/internetshop:latest
     depends_on:
       - "internetshop_db"
     container_name: internetshop_api

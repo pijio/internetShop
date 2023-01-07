@@ -670,3 +670,20 @@ File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
 2023-01-06 15:26:54.2717 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
 2023-01-06 16:22:03.4293 Info AppDomain Shutting down. LogFactory closing...
 2023-01-06 16:22:03.4512 Info LogFactory has been closed.
+2023-01-07 17:25:59.1461 Info Message Template Auto Format enabled
+2023-01-07 17:25:59.1461 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-07 17:25:59.1569 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-07 17:25:59.2153 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-07 17:25:59.2234 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-07 17:25:59.2234 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-07 17:25:59.2459 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\arthur.bushev\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Release\net5.0\NLog.config
+2023-01-07 17:25:59.2592 Info Configuration initialized.
+2023-01-07 17:25:59.2592 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
