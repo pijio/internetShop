@@ -5,6 +5,7 @@ using InternetShop.Api.RepresentationModels;
 using InternetShop.DAL;
 using InternetShop.SiteApp.Commands.GetFiltredProductList;
 using InternetShop.SiteApp.Commands.GetProductsList;
+using InternetShop.SiteApp.Commands.MakeOrder;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,12 @@ namespace InternetShop.Api.Controllers
             return Array.ConvertAll(
                 await _mediator.Send(new FiltersQuery(category, (OrderedProps)order, orderDirection)),
                 item => (ProductModel)item);
+        }
+
+        [HttpPost("makeorder")]
+        public async Task MakeOrder(MakeOrderQuery orderData)
+        {
+            
         }
     }
 }

@@ -1,1 +1,1 @@
-docker build --rm -t prod/internetshop:latest .
+docker build --rm -t pijio/internetshop:latest .

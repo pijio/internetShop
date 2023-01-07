@@ -10,6 +10,8 @@ namespace InternetShop.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public InternetShopDbContext(DbContextOptions<InternetShopDbContext> options) : base(options)
         {
         }
@@ -28,7 +30,11 @@ namespace InternetShop.DAL
             builder.Entity<ProductAdditInfo>().HasKey(k => new { k.InfoId });
             builder.Entity<Characteristics>().HasKey(k => new { k.CharactId });
             builder.Entity<Category>().HasKey(k => new { k.Id });
-            builder.Entity<ProductType>().HasKey(k => new { k.TypeId });
+            builder.Entity<ProductType>().HasKey(k => new { k.TypeId });            
+            builder.Entity<Order>().HasKey(k => new { k.OrderId });            
+            builder.Entity<OrderDetail>().HasKey(k => new { k.Id });
+
+
         }
 
         private void MapIdentityColumns(ModelBuilder builder)
