@@ -21,6 +21,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using NLog.Fluent;
 
 namespace InternetShop.Api
 {
@@ -69,6 +70,16 @@ namespace InternetShop.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ICustomLogger logger)
         {
             logger.Manager.Info("Web app starting...");
+            if (Environment.GetEnvironmentVariable("Migrate") != null &&
+                Convert.ToBoolean(Environment.GetEnvironmentVariable("Migrate")))
+            {
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<InternetShopDbContext>();
+                    context.Database.Migrate();
+                    logger.Manager.Info("migrations applied...");
+                }
+            } 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

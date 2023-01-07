@@ -16,6 +16,7 @@ services:
       - ConnectionString=Server=internetshop_db;Port=5432;Database=InternetShopDb;User Id=postgres;Password=postgres
       - ASPNETCORE_HTTP_PORT=https://+:5001
       - ASPNETCORE_URLS=http://+:5000
+      - Migrate=true
   
   internetshop_db:
     image: postgres:latest
