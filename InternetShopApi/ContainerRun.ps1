@@ -1,0 +1,1 @@
+docker run --rm -p 5001:5001 -e ASPNETCORE_HTTP_PORT=https://+:5001 prod/internetshop
