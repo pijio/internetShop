@@ -1,0 +1,34 @@
+version: '1.0'
+
+services:
+  prodapi:
+    image: prod/internetshop
+    depends_on:
+      - "internetshop_db"
+    container_name: internetshop_api
+    ports:
+      - "5001:5001"
+      - "5000:5000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionString=Server=internetshop_db;Port=5432;Database=InternetShopDb;User Id=postgres;Password=postgres
+      - ASPNETCORE_HTTP_PORT=https://+:5001
+      - ASPNETCORE_URLS=http://+:5000
+  
+  internetshop_db:
+    image: postgres:latest
+    container_name: internetshop_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - internetshop_data:/var/lib/postgresql/data/
+
+volumes:
+  internetshop_data:
+    driver: local

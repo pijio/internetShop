@@ -45,9 +45,11 @@ namespace InternetShop.Api
                 s.SwaggerDoc("v1", new OpenApiInfo { Title = "Internet shop API", Version = "v1" });
                 s.CustomSchemaIds(x=> x.FullName);
             });
+            var connString = Environment.GetEnvironmentVariable("ConnectionString")
+                             ?? Configuration.GetSection("ConnectionStrings")["PostgreSql"];
             services.AddDbContext<InternetShopDbContext>(opt =>
             {
-                opt.UseNpgsql(Configuration.GetSection("ConnectionStrings")["PostgreSql"]);
+                opt.UseNpgsql(connString);
             });
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddConfiguration(Configuration);

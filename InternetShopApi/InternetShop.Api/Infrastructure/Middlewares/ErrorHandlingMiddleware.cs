@@ -139,14 +139,12 @@ namespace InternetShop.Api.Infrastructure
                 case InvalidOperationException:
                 {
                     code = HttpStatusCode.BadRequest;
-
                     break;
                 }
                 case UnauthorizedAccessException:
                 case AuthenticationException:
                 {
                     code = HttpStatusCode.Unauthorized;
-
                     break;
                 }
             }
