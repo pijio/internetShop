@@ -31,10 +31,10 @@ namespace InternetShop.DAL
             builder.Entity<Characteristics>().HasKey(k => new { k.CharactId });
             builder.Entity<Category>().HasKey(k => new { k.Id });
             builder.Entity<ProductType>().HasKey(k => new { k.TypeId });            
-            builder.Entity<Order>().HasKey(k => new { k.OrderId });            
+            builder.Entity<Order>().HasKey(k => new { k.OrderId, k.ProductId });            
             builder.Entity<OrderDetail>().HasKey(k => new { k.Id });
-
-
+            builder.Entity<Order>().HasOne(t => t.Product).WithMany(p => p.Orders).HasForeignKey(d => d.ProductId)
+                .IsRequired();
         }
 
         private void MapIdentityColumns(ModelBuilder builder)

@@ -9,7 +9,7 @@ namespace InternetShop.SiteApp.Commands.GetProductsList
 {
     public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, Product[]>
     {
-        private IUnitOfWork _uow;
+        private readonly IUnitOfWork _uow;
 
         public GetProductsQueryHandler(IUnitOfWork uow)
         {

@@ -1,10 +1,23 @@
-﻿namespace InternetShop.DAL
+﻿using System;
+
+namespace InternetShop.DAL
 {
-    public class OrderDetail
+    public class OrderDetail : IBaseEntity
     {
-        public string Id;
-        public string CustomerName;
-        public string PhoneNumber;
-        public string AdressAndComment;
+        public string Id { get; set; }
+        public string CustomerName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string AdressAndComment { get; set; }
+        public DateTime OrderDate { get; set; }
+
+        public OrderDetail() {}
+        public OrderDetail(string customerName, string number, string info)
+        {
+            Id = Guid.NewGuid().ToString();
+            CustomerName = customerName;
+            PhoneNumber = number;
+            AdressAndComment = info;
+            OrderDate = DateTime.Now;
+        }
     }
 }

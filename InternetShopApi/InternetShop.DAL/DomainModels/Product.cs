@@ -1,4 +1,6 @@
-﻿namespace InternetShop.DAL
+﻿using System.Collections.Generic;
+
+namespace InternetShop.DAL
 {
     public class Product : IBaseEntity
     {
@@ -16,5 +18,6 @@
         public ProductAdditInfo AdditInfo { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public List<Order> Orders { get; set; } = new();
     }
 }

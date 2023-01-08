@@ -687,3 +687,132 @@ File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
 2023-01-07 17:25:59.2459 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\arthur.bushev\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Release\net5.0\NLog.config
 2023-01-07 17:25:59.2592 Info Configuration initialized.
 2023-01-07 17:25:59.2592 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 18:45:50.0591 Info Message Template Auto Format enabled
+2023-01-08 18:45:50.0591 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 18:45:50.0853 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 18:45:50.1659 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 18:45:50.1758 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 18:45:50.1758 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 18:45:50.2006 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 18:45:50.2155 Info Configuration initialized.
+2023-01-08 18:45:50.2189 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 19:17:09.9235 Info AppDomain Shutting down. LogFactory closing...
+2023-01-08 19:17:09.9388 Info LogFactory has been closed.
+2023-01-08 19:22:25.3811 Info Message Template Auto Format enabled
+2023-01-08 19:22:25.3988 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 19:22:25.4026 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 19:22:25.4965 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 19:22:25.4965 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 19:22:25.4965 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 19:22:25.5190 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 19:22:25.5331 Info Configuration initialized.
+2023-01-08 19:22:25.5451 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 19:27:57.4877 Info Message Template Auto Format enabled
+2023-01-08 19:27:57.4983 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 19:27:57.4983 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 19:27:57.6083 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 19:27:57.6189 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 19:27:57.6189 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 19:27:57.6485 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 19:27:57.6641 Info Configuration initialized.
+2023-01-08 19:27:57.6674 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 19:28:49.3645 Info AppDomain Shutting down. LogFactory closing...
+2023-01-08 19:28:49.3814 Info LogFactory has been closed.
+2023-01-08 19:29:33.2393 Info Message Template Auto Format enabled
+2023-01-08 19:29:33.2571 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 19:29:33.2630 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 19:29:33.3790 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 19:29:33.3935 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 19:29:33.3935 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 19:29:33.4438 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 19:29:33.4748 Info Configuration initialized.
+2023-01-08 19:29:33.4846 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 19:36:52.3701 Info AppDomain Shutting down. LogFactory closing...
+2023-01-08 19:36:52.3870 Info LogFactory has been closed.
+2023-01-08 19:36:57.4827 Info Message Template Auto Format enabled
+2023-01-08 19:36:57.4827 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 19:36:57.4954 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 19:36:57.5789 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 19:36:57.5887 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 19:36:57.5887 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 19:36:57.6137 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 19:36:57.6282 Info Configuration initialized.
+2023-01-08 19:36:57.6282 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 19:42:12.0257 Info AppDomain Shutting down. LogFactory closing...
+2023-01-08 19:42:12.0440 Info LogFactory has been closed.
+2023-01-08 19:42:17.7123 Info Message Template Auto Format enabled
+2023-01-08 19:42:17.7209 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 19:42:17.7209 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 19:42:17.7993 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 19:42:17.8127 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 19:42:17.8127 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 19:42:17.8428 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 19:42:17.8692 Info Configuration initialized.
+2023-01-08 19:42:17.8692 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False
+2023-01-08 19:43:07.9268 Info AppDomain Shutting down. LogFactory closing...
+2023-01-08 19:43:07.9510 Info LogFactory has been closed.
+2023-01-08 19:43:40.2464 Info Message Template Auto Format enabled
+2023-01-08 19:43:40.2464 Info Loading assembly: NLog.Web.AspNetCore
+2023-01-08 19:43:40.2464 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Web.AspNetCore
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'. Не удается найти указанный файл.
+File name: 'NLog.Web.AspNetCore, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2023-01-08 19:43:40.3270 Info Registered target ConsoleTarget(Name=logconsole)
+2023-01-08 19:43:40.3424 Info Registered target FileTarget(Name=InfoLogFile)
+2023-01-08 19:43:40.3424 Info Registered target FileTarget(Name=ErrorLogFile)
+2023-01-08 19:43:40.3653 Info Validating config: TargetNames=logconsole, InfoLogFile, ErrorLogFile, ConfigItems=54, FilePath=C:\Users\Arthur\RiderProjects\internetShop\InternetShopApi\InternetShop.Api\bin\Debug\net5.0\NLog.config
+2023-01-08 19:43:40.3805 Info Configuration initialized.
+2023-01-08 19:43:40.3805 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.0.1480. Product version: 5.1.0+5e6708d4d288e03b3ddf321838ec14907016f1b8. GlobalAssemblyCache: False

@@ -41,9 +41,16 @@ namespace InternetShop.Api.Controllers
         }
 
         [HttpPost("makeorder")]
-        public async Task MakeOrder(MakeOrderQuery orderData)
+        public async Task<IActionResult> MakeOrder(MakeOrderQuery orderData)
         {
-            
+            try
+            {
+                return Ok(await _mediator.Send(orderData));
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

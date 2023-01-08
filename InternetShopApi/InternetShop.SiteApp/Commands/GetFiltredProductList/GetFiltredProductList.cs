@@ -10,7 +10,7 @@ namespace InternetShop.SiteApp.Commands.GetFiltredProductList
 {
     public class GetFiltredProductList : IRequestHandler<FiltersQuery, Product[]>
     {
-        public IUnitOfWork _uow;
+        public readonly IUnitOfWork _uow;
         public GetFiltredProductList(IUnitOfWork uow)
         {
             _uow = uow;

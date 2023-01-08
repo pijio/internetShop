@@ -3,15 +3,17 @@ using System;
 using InternetShop.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InternetShop.DAL.Migrations
 {
     [DbContext(typeof(InternetShopDbContext))]
-    partial class InternetShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230108131719_ordernavpropfix")]
+    partial class ordernavpropfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,18 +104,6 @@ namespace InternetShop.DAL.Migrations
             modelBuilder.Entity("InternetShop.DAL.OrderDetail", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<string>("AdressAndComment")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

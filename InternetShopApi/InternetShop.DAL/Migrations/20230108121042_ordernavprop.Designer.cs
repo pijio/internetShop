@@ -3,15 +3,17 @@ using System;
 using InternetShop.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InternetShop.DAL.Migrations
 {
     [DbContext(typeof(InternetShopDbContext))]
-    partial class InternetShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230108121042_ordernavprop")]
+    partial class ordernavprop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,18 +104,6 @@ namespace InternetShop.DAL.Migrations
             modelBuilder.Entity("InternetShop.DAL.OrderDetail", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<string>("AdressAndComment")
-                        .HasColumnType("text");
-
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -244,7 +234,7 @@ namespace InternetShop.DAL.Migrations
                         .HasForeignKey("OrderDetailId");
 
                     b.HasOne("InternetShop.DAL.Product", "Product")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -283,11 +273,6 @@ namespace InternetShop.DAL.Migrations
                     b.Navigation("Characteristics");
 
                     b.Navigation("ProductType");
-                });
-
-            modelBuilder.Entity("InternetShop.DAL.Product", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

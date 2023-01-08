@@ -1,7 +1,8 @@
 import './ShopForm.css'
 import {Link} from "react-router-dom";
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {makeOrder} from "../../../redux/actions/order";
 
 const ShopForm = () => {
 
@@ -14,64 +15,55 @@ const ShopForm = () => {
         return items[key][0]
     });
     const goodsItems = groupedFirstItems.map((item) => item.name)
-
-    const groupedAllItems = Object.keys(items).map(key => {
-        return items[key];
-    });
-
+    const dispatch = useDispatch();
+    const customerNameRef = useRef();
+    const phoneNumberRef = useRef();
+    const detailsRef = useRef();
+    const [error, setError] = useState("")
+    const sendOrder = (e) => {
+        e.preventDefault();
+        var customerName = customerNameRef.current.value;
+        var phone = phoneNumberRef.current.value;
+        var details = detailsRef.current.value;
+        var itemsIds = groupedFirstItems.map((item) => item.id)
+        if(customerName || phone || details || itemsIds) {
+            setError("данные для заказа некорректны")
+            return
+        }
+        dispatch(makeOrder(itemsIds, customerName, phone, details))
+    }
     return (
-        <form target={'_blank'}
-              action={''}
-              className="card">
-            <Link to={'/'}>
-                <img className={'toHome__Button1'} src="https://cdn-icons-png.flaticon.com/512/6298/6298551.png"
-                     alt=""/>
-            </Link>
-            <h2 className={'h2__order'}>Оформить Заказ</h2>
-            <div className="row">
-                <div className="col">
-                    <div className="form-group">
-                        <label className="label-form">Ваше Имя</label>
-                        <input required={true} className="input" type="text"/>
-                    </div>
-                </div>
-
-                <div className="col selected__gods">
-                    <div className="form-group">
-                        <label className="label-form">Выбранные товары ({totalCount})</label>
-                        <textarea readOnly type="text"
-                                  value={goodsItems}/>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="form-group">
-                        <label className="label-form">Телефон</label>
-                        <input required={true} className="input" type="tel"/>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="form-group">
-                        <label className="label-form">Общая сумма заказа</label>
-                        <input name="entry.635165254" readOnly value={`${totalPrice} сом`}
-                               type="text"/>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="form-group">
-                        <label className="label-form">Адрес доставки и комментарий к заказу</label>
-                        <textarea autoComplete={'Введите Ваш адрес'} required={true} className="input"
-                                  ></textarea>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <input type="submit" value="Отправить"/>
-                </div>
+        <div className="Wrapper">
+            <h1 className="Title">Оформить заказ</h1>
+            <div className="Input">
+                <input type="text"  className="Input-text" placeholder="Ваше имя"/>
+                    <label htmlFor="input" className="Input-label">Имя</label>
             </div>
-        </form>
+            <div className="Input">
+                <input type="text"  className="Input-text" placeholder="Ваш номер"/>
+                <label htmlFor="input" className="Input-label">Номер телефона</label>
+            </div>
+            <div className="Input">
+                <textarea className="Input-text" placeholder="Ваш адрес и комментарий к заказу"/>
+            </div>
+            <h4 className="Title">Детали заказа</h4>
+            <div className="details">
+                <span className="details__title">
+                    Выбранные товары:
+                </span>
+                <br/>
+                {goodsItems ? <span className="white">Ничего не выбранно</span> : goodsItems.map((good) => <span className="white">{good}</span>)}
+                <br/>
+                <span className="details__title">
+                    Общая сумма заказа:
+                </span>
+                <br/>
+                <span className="white">{totalPrice ? totalPrice : 0} сом</span>
+            </div>
+            <div className="SubmitArea">
+                <button className="bn632-hover bn20">Отправить</button>
+            </div>
+        </div>
     )
 }
 export default ShopForm

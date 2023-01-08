@@ -1,6 +1,8 @@
-﻿namespace InternetShop.SiteApp.Commands.MakeOrder
+﻿using MediatR;
+
+namespace InternetShop.SiteApp.Commands.MakeOrder
 {
-    public class MakeOrderQuery
+    public class MakeOrderQuery : IRequest<string>
     {
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; }
