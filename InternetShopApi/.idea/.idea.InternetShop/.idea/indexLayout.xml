@@ -2,7 +2,13 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders />
-    <explicitIncludes />
+    <explicitIncludes>
+      <Path>.gitignore</Path>
+      <Path>ContainerBuild.ps1</Path>
+      <Path>Dockerfile</Path>
+      <Path>docker-compose.yml</Path>
+      <Path>filldata.sql</Path>
+    </explicitIncludes>
     <explicitExcludes />
   </component>
 </project>

@@ -75,7 +75,7 @@ namespace InternetShop.Api.RepresentationModels
             {
                 model.Processor = product.Characteristics.Processor;
                 model.Os = product.Characteristics.Os;
-                model.Ram = product.Characteristics.Ram.HasValue ? $"{product.Characteristics.Ram}GB" : "";
+                model.Ram = product.Characteristics.Ram ?? "";
                 model.ScreenSize = product.Characteristics.ScreenSize.HasValue
                     ? $"{product.Characteristics.ScreenSize}'"
                     : "";

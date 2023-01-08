@@ -4,7 +4,7 @@
     {
         public int CharactId { get; set; }
         public string Processor { get; set; }
-        public int? Ram { get; set; }
+        public string? Ram { get; set; }
         public string? MatrixType { get; set; }
         public string? RelationSide { get; set; }
         public string? Dpi { get; set; }
