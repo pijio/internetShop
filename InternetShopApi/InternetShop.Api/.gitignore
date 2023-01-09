@@ -1,1 +1,3 @@
-Logs/
+Logs/*
+appsettings.json
+appsettings.Development.json
