@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using InternetShop.DAL;
+using InternetShop.SiteApp.Commands.OrderCreateNotification;
 using MediatR;
 
 namespace InternetShop.SiteApp.Commands.MakeOrder
@@ -11,10 +12,12 @@ namespace InternetShop.SiteApp.Commands.MakeOrder
     public class MakeOrderQueryHandler : IRequestHandler<MakeOrderQuery, string>
     {
         private readonly IUnitOfWork _uow;
+        private readonly IMediator _mediator;
 
-        public MakeOrderQueryHandler(IUnitOfWork uow)
+        public MakeOrderQueryHandler(IMediator mediator, IUnitOfWork uow)
         {
             _uow = uow;
+            _mediator = mediator;
         }
 
         public async Task<string> Handle(MakeOrderQuery query, CancellationToken token)
@@ -35,6 +38,7 @@ namespace InternetShop.SiteApp.Commands.MakeOrder
             await _uow.GetGenericRepository<OrderDetail>().AddAsync(details);
             await _uow.GetGenericRepository<Order>().AddRangeAsync(orderParts);
             await _uow.SaveChangesAsync();
+            await _mediator.Publish(new OrderCreated(orderId));
             return orderId;
         }
     }
