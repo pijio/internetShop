@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using InternetShop.Api.CustomLogger;
 using InternetShop.Api.Services.AAS;
+using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
