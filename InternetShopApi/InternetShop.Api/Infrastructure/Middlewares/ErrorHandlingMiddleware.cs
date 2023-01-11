@@ -6,7 +6,7 @@ using System.Net.Mime;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
-using InternetShop.Api.CustomLogger;
+using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;

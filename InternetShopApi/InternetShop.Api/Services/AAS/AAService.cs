@@ -2,7 +2,6 @@
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using InternetShop.Api.CustomLogger;
 using InternetShop.DAL;
 using InternetShop.SiteApp.Utilities;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +9,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NLog;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../MainPage/Header";
 import Slider from "../MainPage/Slider/Slider";
 import Maps from "../MainPage/Maps";
@@ -8,21 +8,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {clearCart,removeGoods} from "../../../redux/actions/cartClear";
 import {minusItemFromCart} from "../../../redux/actions/cart";
 import Contacts from "../GoodsDetailPage/GoodsDetailPageContent/Contacts/Contacts";
-
+import ShopForm from "../ShopForm/ShopForm";
+import Modal from "../../UI/Modal/Modal"
 
 const Cart = () => {
 
-
-
-
-
-
-
-
-
     const dispatch=useDispatch();
     const {totalPrice,totalCount,items} = useSelector(({cart})=>cart);
-
 
     const groupedFirstItems = Object.keys(items).map(key=>{
         return items[key][0];
@@ -33,28 +25,33 @@ const Cart = () => {
 
     const allItems = Object.entries(items);
     const alaItemsOhneKeys = allItems.map((items)=>{
-        // return items[1][0].id===action.payload
-    });
 
+    });
 
     const totalOnePrice = Object.keys(items).map(key=>{
         return items[key].map((item)=>item.price).reduce((price,sum)=>{
             return price+sum
         },0)
     });
-
+    const renderContacts = () => {
+        return <div className={'footer__contacts'}>
+            <Contacts/>
+        </div>
+    }
+    const renderMaps = () => {
+        return <Maps/>
+    }
     const onRemoveItem = (id)=>{
-        if (window.confirm('Вы действительно хотите удалить товар и лишить Артёма и Никиту зароботка?')){
+        if (window.confirm('Вы действительно хотите удалить товар?')){
             dispatch(removeGoods(id))
         }
     }
-
 
     const onMinusItem = (id)=>{
         dispatch(minusItemFromCart(id))
     }
 
-
+    const [modal, setModal] = useState(false);
 
     return (
         <>
@@ -131,21 +128,19 @@ const Cart = () => {
                                         <span>Вернуться назад</span>
                                     </span>
                                     </Link>
-                                    <Link to={'/order'}>
-                                        <div className="button pay-btn">
-                                          <span>Оформить доставку в один клик</span>
-                                        </div>
-                                    </Link>
+                                    <button onClick={() => setModal(true)} className="button pay-btn">
+                                      Оформить доставку в один клик
+                                    </button>
+                                    <Modal visible={modal} setVisible={setModal}>
+                                        <ShopForm setVisible={setModal}></ShopForm>
+                                    </Modal>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className={'footer__contacts'}>
-                    <Contacts/>
-                </div>
-                <Maps/>
-                <p className={'artem'}>Полная разработка сайта (REACT) - Шубович Артём </p>
+                {modal ? <></> : renderContacts()}
+                {modal ? <></> : renderMaps()}
             </div>
 
         </>

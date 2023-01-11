@@ -8,7 +8,6 @@ export const makeOrder = (goodsIds, name, phone, details) => {
         orderDetails: details,
         orderProducts: goodsIds
     }
-    return (
-        axios.post(`${baseUrl}/shop/makeorder`, request).then(({data}) => {
-        }).catch(error => console.log('Интернет включи')));
+    axios.post(`${baseUrl}/shop/makeorder`, request).then(({data}) => {
+    }).catch(error => { return error});
 }

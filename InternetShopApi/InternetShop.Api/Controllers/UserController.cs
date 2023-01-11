@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using InternetShop.Api.CustomLogger;
 using InternetShop.Api.Services.AAS;
+using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
@@ -10,7 +10,7 @@ namespace InternetShop.Api.Controllers
     
     [ApiController]
     [EnableCors("ShopApiPolicy")]
-    [Route("/shop")]
+    [Route("/")]
     public class UserController : ControllerBase
     {
         private readonly Logger _logger;

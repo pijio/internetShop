@@ -1,27 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using InternetShop.Api.Services;
-using System.Threading.Tasks;
-using InternetShop.Api.CustomLogger;
 using InternetShop.Api.Infrastructure;
 using InternetShop.Api.Services.AAS;
 using InternetShop.DAL;
 using InternetShop.SiteApp;
+using InternetShop.SiteApp.Services.CustomLogger;
+using InternetShop.SiteApp.Services.EmailService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using NLog.Fluent;
 
 namespace InternetShop.Api
 {
@@ -64,7 +55,8 @@ namespace InternetShop.Api
                     .AllowAnyHeader();
             }));
             services.AddScoped<AAService, AAService>();
-
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddEmailService();
         }
 
         // Конвеер запросов, подключение мидлвар компонентов

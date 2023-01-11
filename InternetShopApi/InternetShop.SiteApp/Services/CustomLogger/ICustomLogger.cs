@@ -1,5 +1,5 @@
 ﻿using NLog;
-namespace InternetShop.Api.CustomLogger
+namespace InternetShop.SiteApp.Services.CustomLogger
 {
     public interface ICustomLogger
     {

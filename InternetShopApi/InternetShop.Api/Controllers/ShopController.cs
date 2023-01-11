@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using InternetShop.Api.CustomLogger;
 using InternetShop.Api.RepresentationModels;
 using InternetShop.DAL;
 using InternetShop.SiteApp.Commands.GetFiltredProductList;
 using InternetShop.SiteApp.Commands.GetProductsList;
 using InternetShop.SiteApp.Commands.MakeOrder;
+using InternetShop.SiteApp.Services.CustomLogger;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +45,8 @@ namespace InternetShop.Api.Controllers
         {
             try
             {
-                return Ok(await _mediator.Send(orderData));
+                await _mediator.Send(orderData);
+                return Ok();
             }
             catch (InvalidOperationException e)
             {
