@@ -241,4 +241,10 @@ br {
     .Wrapper {
         width: 90vw;
     }
+    .methods {
+        flex-direction: column;
+    }
+    .method {
+        margin-bottom: 5px;
+    }
 }

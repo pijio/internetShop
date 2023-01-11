@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using InternetShop.Api.RepresentationModels;
 using InternetShop.Api.Services.AAS;
 using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.AspNetCore.Cors;
@@ -25,9 +26,9 @@ namespace InternetShop.Api.Controllers
         }
 
         [HttpPost("auth")]
-        public async Task<IActionResult> Authenticate(string username, string password)
+        public async Task<IActionResult> Authenticate([FromBody] LoginModel request)
         {
-            var responce = await _aaService.Authenticate(username, password);
+            var responce = await _aaService.Authenticate(request.username, request.password);
             if (responce == null)
             {
                 return BadRequest("Логин или пароль неправильные");
@@ -37,14 +38,14 @@ namespace InternetShop.Api.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password, string email, string secretKey)
+        public async Task<IActionResult> Register([FromBody] RegisterModel request)
         {
             var employeeKey = _configuration.GetSection("SecretKeys")["EmployeeKey"];
-            if (secretKey != employeeKey)
+            if (request.secretKey != employeeKey)
             {
                 return BadRequest("Секретный ключ неправильный!");
             }
-            var response = await _aaService.Register(username, password, email);
+            var response = await _aaService.Register(request.username, request.password, request.email);
             if (response == null)
             {
                 return BadRequest("Данный логин или пароль уже используются");
