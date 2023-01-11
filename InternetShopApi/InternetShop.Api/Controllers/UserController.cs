@@ -10,7 +10,7 @@ namespace InternetShop.Api.Controllers
     
     [ApiController]
     [EnableCors("ShopApiPolicy")]
-    [Route("/shop")]
+    [Route("/")]
     public class UserController : ControllerBase
     {
         private readonly Logger _logger;

@@ -45,7 +45,8 @@ namespace InternetShop.Api.Controllers
         {
             try
             {
-                return Ok(await _mediator.Send(orderData));
+                await _mediator.Send(orderData);
+                return Ok();
             }
             catch (InvalidOperationException e)
             {

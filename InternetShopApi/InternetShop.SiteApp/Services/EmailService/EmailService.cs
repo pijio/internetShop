@@ -19,14 +19,14 @@ namespace InternetShop.SiteApp.Services.EmailService
         public EmailService(IOptions<MailSettings> settings, ICustomLogger logger)
         {
             _settings = settings.Value;
-            _smtp = new SmtpClient(_settings.Host, _settings.Port)
-            {
-                Credentials = new NetworkCredential(_settings.Mail, _settings.Password),
-                EnableSsl = true
-            };
+            _smtp = new SmtpClient(_settings.Host, _settings.Port);
+            _smtp.UseDefaultCredentials = false;
+            _smtp.Credentials = new NetworkCredential(_settings.Mail, _settings.Password);
+            _smtp.EnableSsl = true;
+            _smtp.Timeout = 10000;
             _logger = logger.Manager;
         }
-        public async Task SendEmailAsync(MailRequestModel mailRequest)
+        public Task SendEmailAsync(MailRequestModel mailRequest)
         {
             MailAddress from = new MailAddress(_settings.Mail);
             MailAddress to = new MailAddress(mailRequest.ToEmail);
@@ -34,13 +34,15 @@ namespace InternetShop.SiteApp.Services.EmailService
             message.Subject = mailRequest.Subject;
             message.Body = mailRequest.Body;
             try
-            { 
-                _smtp.SendAsync(message, null);
+            {
+                _smtp.Send(message);
             }
             catch (Exception e)
             {
                 throw;
             }
+
+            return Task.CompletedTask;
         }
 
         public async Task SendEmailsAsync(List<MailRequestModel> mails)
@@ -56,7 +58,6 @@ namespace InternetShop.SiteApp.Services.EmailService
                     var errorMsg =
                         $"Ошибка при отправке email по адресу {mail.ToEmail}\nИсключение: {e.Message}\nStacktrace: {e.StackTrace}";
                     _logger.Error(errorMsg);
-                    throw new Exception(errorMsg);
                 }
             }
         }

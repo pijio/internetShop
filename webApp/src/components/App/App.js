@@ -16,7 +16,6 @@ function App() {
             <Route exact path={'/'} component={Main}/>
             <Route exact path={'/cart'} component={totalCount ? Cart : CartEmpty}/>
             <Route exact path={'/details'} component={GoodsDetailPage}/>
-            <Route exact path={'/order'} component={ShopForm}/>
         </Router>
     );
 }
