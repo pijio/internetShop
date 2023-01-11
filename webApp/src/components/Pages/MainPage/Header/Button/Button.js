@@ -11,6 +11,7 @@ const Button = (props)=> {
     }))
 
     return (
+        <div className="buttons">
         <Link to={'/cart'}>
             <button className="button button--cart">
                 <span>{totalPrice}сом</span>
@@ -41,6 +42,9 @@ const Button = (props)=> {
                 <span>{totalCount}</span>
             </button>
         </Link>
+        </div>
+
+
     )
 }
 

@@ -55,7 +55,6 @@ const CartEmpty = () => {
                     <Contacts/>
                 </div>
                 <Maps/>
-                <p className={'artem'}>Полная разработка сайта (REACT) - Шубович Артём </p>
             </div>
 
         </>

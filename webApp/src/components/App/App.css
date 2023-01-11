@@ -886,6 +886,15 @@ body {
   display: none;
   }
 }
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+.button--loggin {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+}
 
 @media screen and (max-width: 960px) {
   .categories ul {
@@ -919,6 +928,9 @@ body {
     right: 116px;
     margin-top: 50px;
   }
+  .button--loggin {
+    margin-top: 100px;
+  }
 }
 
 @media screen and (max-width: 100vw) {
@@ -937,5 +949,8 @@ body {
   }
   .header {
     height: 200px;
+  }
+  .button--loggin {
+    margin-top: 100px;
   }
 }
