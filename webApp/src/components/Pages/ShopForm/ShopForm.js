@@ -21,9 +21,9 @@ const ShopForm = ({setVisible}) => {
         e.preventDefault();
         let customerName = customerNameRef.current.value;
         let phone = phoneNumberRef.current.value;
-        let itemsIds = groupedFirstItems.map((item) => item.id)
+        let items = groupedFirstItems.map((item) => ({productId: item.product.id, productCount: item.count}))
         let details = detailsRef.current.value;
-        if(itemsIds === null) {
+        if(items === null) {
             setError("В корзине нету товаров. Вернитесь и выберите что нибудь :)")
             return
         }
@@ -35,7 +35,7 @@ const ShopForm = ({setVisible}) => {
             setError("Введите номер в формате 0XXXXXXXXX или +996XXXXXXXXX")
             return
         }
-        makeOrder(itemsIds, customerName, phone, details)
+        makeOrder(items, customerName, phone, details)
         setVisible(false)
         navigate.push('/')
     }

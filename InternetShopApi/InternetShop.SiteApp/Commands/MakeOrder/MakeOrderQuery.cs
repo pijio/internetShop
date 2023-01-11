@@ -7,6 +7,11 @@ namespace InternetShop.SiteApp.Commands.MakeOrder
         public string CustomerName { get; set; }
         public string PhoneNumber { get; set; }
         public string OrderDetails { get; set; }
-        public int[] OrderProducts { get; set; }
+        public ProductDetails[] OrderProducts { get; set; }
+        public class ProductDetails
+        {
+            public int ProductId { get; set; }
+            public int ProductCount { get; set; }
+        }
     }
 }

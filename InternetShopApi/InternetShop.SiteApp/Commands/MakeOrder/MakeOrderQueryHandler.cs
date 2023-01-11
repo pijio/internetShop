@@ -26,19 +26,22 @@ namespace InternetShop.SiteApp.Commands.MakeOrder
             var orderParts = new List<Order>();
             var orderId = Guid.NewGuid().ToString();
             var products = (await _uow.GetGenericRepository<Product>().GetAllAsync()).ToArray();
-            if(!query.OrderProducts.Any(x => products.Any(y => y.ProductId == x)))
+            if(!query.OrderProducts.Any(x => products.Any(y => y.ProductId == x.ProductId)))
             {
                 throw new InvalidOperationException("Указанных в заказе товаров не существует в базе данных");
             }
-            foreach (var productId in query.OrderProducts)
+            foreach (var product in query.OrderProducts)
             {
-                
-                orderParts.Add(new Order() { OrderId = orderId, ProductId = productId, OrderDetailId = details.Id });
+                orderParts.Add(new Order
+                {
+                    OrderId = orderId, ProductId = product.ProductId, OrderDetailId = details.Id,
+                    ProductCount = product.ProductCount
+                });
             }
             await _uow.GetGenericRepository<OrderDetail>().AddAsync(details);
             await _uow.GetGenericRepository<Order>().AddRangeAsync(orderParts);
             await _uow.SaveChangesAsync();
-            await _mediator.Publish(new OrderCreated(orderId));
+            await _mediator.Publish(new OrderCreated(orderId), token);
             return orderId;
         }
     }

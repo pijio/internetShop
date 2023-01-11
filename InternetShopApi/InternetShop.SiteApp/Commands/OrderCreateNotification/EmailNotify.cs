@@ -49,8 +49,8 @@ namespace InternetShop.SiteApp.Commands.OrderCreateNotification
             double sum = 0;
             foreach (var part in orderParts)
             {
-                sb.AppendLine($"{part.Product.Name}");
-                sum += part.Product.Price;
+                sb.AppendLine($"{part.Product.Name}: {part.ProductCount} шт.");
+                sum += part.Product.Price * part.ProductCount;
             }
             sb.AppendLine($"Общая сумма заказа составляет {sum} сом.");
             return sb.ToString();
