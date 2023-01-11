@@ -23,6 +23,7 @@ namespace InternetShop.Api
             Configuration = new ConfigurationBuilder()
                 .AddJsonFile("customlogger.conf.json")
                 .AddJsonFile("smtpsettings.json")
+                .AddJsonFile("secretkey.json")
                 .AddConfiguration(configuration)
                 .Build();
         }

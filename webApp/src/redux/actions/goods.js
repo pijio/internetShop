@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiEndpoint from "../../apiEndpoint";
 
 export const setLoaded = payload =>({
     type:'SET__LOADED',
@@ -6,9 +7,8 @@ export const setLoaded = payload =>({
 })
 export const fetchGoods = (category,sortBy)=>(dispatch)=>{
     dispatch(setLoaded(false))
-    var baseurl = "https://localhost:5003"
     return (
-        axios.get(`${baseurl}/shop/filtredProducts?category=${category!=null ? category : ""}&order=${sortBy}&direction=false`).then(({data})=>{
+        axios.get(`${apiEndpoint}/shop/filtredProducts?category=${category!=null ? category : ""}&order=${sortBy}&direction=false`).then(({data})=>{
             dispatch(setGoods(data))
         }).catch(error=>console.log('Интернет включи')));
 }

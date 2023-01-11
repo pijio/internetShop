@@ -3,6 +3,7 @@ using InternetShop.Api.Services.AAS;
 using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using NLog;
 
 namespace InternetShop.Api.Controllers
@@ -15,10 +16,12 @@ namespace InternetShop.Api.Controllers
     {
         private readonly Logger _logger;
         private readonly AAService _aaService;
-        public UserController(AAService service, ICustomLogger logger)
+        private readonly IConfiguration _configuration;
+        public UserController(AAService service, ICustomLogger logger, IConfiguration configuration)
         {
             _aaService = service;
             _logger = logger.Manager;
+            _configuration = configuration;
         }
 
         [HttpPost("auth")]
@@ -34,8 +37,13 @@ namespace InternetShop.Api.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password, string email)
+        public async Task<IActionResult> Register(string username, string password, string email, string secretKey)
         {
+            var employeeKey = _configuration.GetSection("SecretKeys")["EmployeeKey"];
+            if (secretKey != employeeKey)
+            {
+                return BadRequest("Секретный ключ неправильный!");
+            }
             var response = await _aaService.Register(username, password, email);
             if (response == null)
             {
