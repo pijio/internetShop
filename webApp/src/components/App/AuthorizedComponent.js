@@ -6,7 +6,7 @@ const AuthorizedComponent = Component => props => {
     const { isAuth } = useSelector(({auth}) => auth)
     if( isAuth )
         return <Component {...props}/>;
-    return <Redirect to={'/auth'}/>
+    return <Redirect to={'/unauth'}/>
 };
 
 export default AuthorizedComponent;

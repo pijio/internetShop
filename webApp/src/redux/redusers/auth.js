@@ -1,12 +1,11 @@
 import useAuth from "../../hooks/useAuth/useAuth";
 
 const initialState = {
-    username: localStorage.getItem('User') ?? '',
+    username: localStorage.getItem('username') ?? '',
     isAuthed: false
 }
 
 const authReducer = (state = initialState, action) => {
-    console.log(action)
     switch(action.type) {
         case 'SET_AUTH_FLAG': {
             return {

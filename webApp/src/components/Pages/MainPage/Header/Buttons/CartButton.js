@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-const Button = (props)=> {
+const CartButton = (props)=> {
 
 
     const {totalPrice,totalCount}= useSelector(({cart})=>({
@@ -48,4 +48,4 @@ const Button = (props)=> {
     )
 }
 
-export default Button
+export default CartButton
