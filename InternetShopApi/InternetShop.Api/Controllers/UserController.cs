@@ -26,7 +26,7 @@ namespace InternetShop.Api.Controllers
             _configuration = configuration;
         }
         [Authorize]
-        [HttpPost("verify")]
+        [HttpGet("verify")]
         public IActionResult VerifyToken()
         {
             return Ok();

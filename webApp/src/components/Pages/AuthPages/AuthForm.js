@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import axios from "axios";
 import baseUrl from "../../../apiEndpoint";
 import {useDispatch} from "react-redux";
-import {setAuthed} from "../../../redux/actions/auth";
+import {setAuthed, setUserName} from "../../../redux/actions/auth";
 
 const AuthForm = () => {
     const [error, setError] = useState("")
@@ -121,6 +121,7 @@ const AuthForm = () => {
             localStorage.setItem('username', username)
             localStorage.setItem('authtoken', authtoken)
             dispatch(setAuthed(true))
+            dispatch(setUserName(username))
             navigate.push('/')
         }).catch((error) => {
             if(error.response) {
