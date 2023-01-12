@@ -8,12 +8,10 @@ const AuthButton = () => {
     const getPath = (authed) => {
         return (authed ? "/logout" : "/auth" )
     }
-    const [isAuthed, setAuthed] = useState(useSelector(({auth}) => auth.isAuthed))
+    const [isAuthed, setAuthed] = useState(!!localStorage.getItem('authtoken'))
     const [redirectPath, setPath] = useState(getPath(isAuthed))
     const [btnSvg, setSvg] = useState(isAuthed ? <LogoutSvg/> : <LoginSvg/>)
     const handleClick = (e) => {
-        setAuthed(!isAuthed)
-        setSvg(isAuthed ? <LogoutSvg/> : <LoginSvg/>)
         setPath(getPath(isAuthed))
     }
     return (

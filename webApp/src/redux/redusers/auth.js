@@ -2,7 +2,7 @@ import useAuth from "../../hooks/useAuth/useAuth";
 
 const initialState = {
     username: localStorage.getItem('username') ?? '',
-    isAuthed: false
+    isAuthed: !!localStorage.getItem('authtoken')
 }
 
 const authReducer = (state = initialState, action) => {
