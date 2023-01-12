@@ -1,7 +1,10 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import './AuthForm.css'
 import {useHistory} from "react-router-dom";
-import AuthAction from "./Auth.Action";
+import axios from "axios";
+import baseUrl from "../../../apiEndpoint";
+import {useDispatch} from "react-redux";
+import {setAuthed} from "../../../redux/actions/auth";
 
 const AuthForm = () => {
     const [error, setError] = useState("")
@@ -11,13 +14,13 @@ const AuthForm = () => {
     const [confirmPwd, setConfirmPwd] = useState('')
     const [email, setEmail] = useState('')
     const [employeeSecret, setSecret] = useState('')
-    const [isSuccess, setSuccess] = useState(false)
     const usernameRef = useRef(username)
     const passwordRef = useRef(password)
     const confirmPwdRef = useRef(confirmPwd)
     const emailRef = useRef(email)
     const secretRef = useRef(employeeSecret)
     const navigate = useHistory();
+    const dispatch = useDispatch();
     const changeMethod = (method) => {
         setError('');
         passwordRef.current.value = "";
@@ -101,9 +104,9 @@ const AuthForm = () => {
     const validator = useMemo(() => {
         return getValidator(method)
     }, [method])
-    const sumbitAction = (e) => {
+    const submitAction = async (e) => {
         if (!validator(username, password, confirmPwd, email, secretRef)) {
-            return;
+
         }
         const payload = method === "Auth" ? {username: username, password: password} : {
             username: username,
@@ -112,7 +115,21 @@ const AuthForm = () => {
             secretKey: employeeSecret
         }
         const endpoint = method === "Auth" ? "/auth" : "/register"
-
+        await axios.post(baseUrl+endpoint, payload).then((response) => {
+            const username = response.data.username;
+            const authtoken = response.data.token;
+            localStorage.setItem('username', username)
+            localStorage.setItem('authtoken', authtoken)
+            dispatch(setAuthed(true))
+            navigate.push('/')
+        }).catch((error) => {
+            if(error.response) {
+                setError(error.response.data)
+            }
+            else {
+                setError("Непредвиденная ошибка. Повторите попытку позже")
+            }
+        })
     }
     return (
         <div className="WrapperAuth">
@@ -133,7 +150,7 @@ const AuthForm = () => {
                 </div>
                 {fields}
                 <div className="SubmitArea">
-                    <button className="bn632-hover bn20" onClick={sumbitAction}>Отправить</button>
+                    <button className="bn632-hover bn20" onClick={submitAction}>Отправить</button>
                 </div>
             </div>
         </div>

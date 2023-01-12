@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using InternetShop.Api.Infrastructure.Attributes;
 using InternetShop.Api.RepresentationModels;
 using InternetShop.Api.Services.AAS;
 using InternetShop.SiteApp.Services.CustomLogger;
@@ -24,9 +25,14 @@ namespace InternetShop.Api.Controllers
             _logger = logger.Manager;
             _configuration = configuration;
         }
-
+        [Authorize]
+        [HttpPost("verify")]
+        public IActionResult VerifyToken()
+        {
+            return Ok();
+        }
         [HttpPost("auth")]
-        public async Task<IActionResult> Authenticate([FromBody] LoginModel request)
+        public async Task<IActionResult> Authenticate(LoginModel request)
         {
             var responce = await _aaService.Authenticate(request.username, request.password);
             if (responce == null)
