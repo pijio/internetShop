@@ -2,3 +2,4 @@ Logs/*
 appsettings.json
 appsettings.Development.json
 smtpsettings.json
+secretkey.json

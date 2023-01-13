@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using InternetShop.DAL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,15 @@ namespace InternetShop.Api.Infrastructure.Attributes
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var user = (User)context.HttpContext.Items["User"];
+            User user;
+            try
+            {
+                user = ((Task<User>)context.HttpContext.Items["User"])?.Result;
+            }
+            catch (InvalidCastException e)
+            {
+                user = (User)context.HttpContext.Items["User"];
+            }
             if (user == null)
             {
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };

@@ -89,6 +89,7 @@
     display: flex;
     justify-content: space-around;
     width: 25%;
+    margin-bottom: 10px;
 }
 .InputAuth {
     position: relative;
@@ -239,5 +240,11 @@ br {
 @media screen and (max-width: 700px) {
     .Wrapper {
         width: 90vw;
+    }
+    .methods {
+        flex-direction: column;
+    }
+    .method {
+        margin-bottom: 5px;
     }
 }

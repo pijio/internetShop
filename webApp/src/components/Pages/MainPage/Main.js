@@ -3,7 +3,7 @@ import Header from "./Header";
 import Slider from "./Slider/Slider";
 import Content from "./Content";
 import Maps from "./Maps";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setCategory} from "../../../redux/actions/filters";
 import Contacts from "../GoodsDetailPage/GoodsDetailPageContent/Contacts/Contacts";
 
@@ -16,7 +16,7 @@ const Main = () => {
     const onSelectedCategory = React.useCallback(index => {
         dispatch(setCategory(index))
     }, [])
-
+    const {isAuthed, username} = useSelector(({auth}) => auth)
     return (
         <div className="wrapper">
             <Header/>
@@ -29,7 +29,7 @@ const Main = () => {
                 <Contacts/>
             </div>
             <Maps/>
-
+            <div>{isAuthed===true ? `Выполнен вход как ${username}` : 'Вход не выполнен'}</div>
         </div>
     )
 }

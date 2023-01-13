@@ -1,8 +1,11 @@
 ﻿using System.Threading.Tasks;
+using InternetShop.Api.Infrastructure.Attributes;
+using InternetShop.Api.RepresentationModels;
 using InternetShop.Api.Services.AAS;
 using InternetShop.SiteApp.Services.CustomLogger;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using NLog;
 
 namespace InternetShop.Api.Controllers
@@ -15,16 +18,23 @@ namespace InternetShop.Api.Controllers
     {
         private readonly Logger _logger;
         private readonly AAService _aaService;
-        public UserController(AAService service, ICustomLogger logger)
+        private readonly IConfiguration _configuration;
+        public UserController(AAService service, ICustomLogger logger, IConfiguration configuration)
         {
             _aaService = service;
             _logger = logger.Manager;
+            _configuration = configuration;
         }
-
-        [HttpPost("auth")]
-        public async Task<IActionResult> Authenticate(string username, string password)
+        [Authorize]
+        [HttpGet("verify")]
+        public IActionResult VerifyToken()
         {
-            var responce = await _aaService.Authenticate(username, password);
+            return Ok();
+        }
+        [HttpPost("auth")]
+        public async Task<IActionResult> Authenticate(LoginModel request)
+        {
+            var responce = await _aaService.Authenticate(request.username, request.password);
             if (responce == null)
             {
                 return BadRequest("Логин или пароль неправильные");
@@ -34,9 +44,14 @@ namespace InternetShop.Api.Controllers
         }
         
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password, string email)
+        public async Task<IActionResult> Register([FromBody] RegisterModel request)
         {
-            var response = await _aaService.Register(username, password, email);
+            var employeeKey = _configuration.GetSection("SecretKeys")["EmployeeKey"];
+            if (request.secretKey != employeeKey)
+            {
+                return BadRequest("Секретный ключ неправильный!");
+            }
+            var response = await _aaService.Register(request.username, request.password, request.email);
             if (response == null)
             {
                 return BadRequest("Данный логин или пароль уже используются");
