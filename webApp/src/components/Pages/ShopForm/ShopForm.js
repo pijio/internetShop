@@ -38,8 +38,8 @@ const ShopForm = ({setVisible}) => {
             setError("Введите номер в формате 0XXXXXXXXX или +996XXXXXXXXX")
             return
         }
+        dispatch(clearCart({}))
         makeOrder(items, customerName, phone, details)
-        dispatch(clearCart())
         setVisible(false)
         navigate.push('/')
     }
