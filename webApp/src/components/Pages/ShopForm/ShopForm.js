@@ -1,9 +1,11 @@
 import './ShopForm.css'
 import React, {useRef, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {makeOrder} from "../../../redux/actions/order";
 import {phoneValidator} from "../../../utils/PhoneValidator"
 import { useHistory } from 'react-router-dom';
+import {disable} from "express/lib/application";
+import {clearCart} from "../../../redux/actions/cartClear";
 
 const ShopForm = ({setVisible}) => {
 
@@ -11,6 +13,7 @@ const ShopForm = ({setVisible}) => {
         totalPrice: cart.totalPrice,
         items: cart.items
     }));
+    const dispatch = useDispatch()
     const groupedFirstItems = Object.keys(items).map(key => ({ product: items[key][0], count: items[key].length}));
     const customerNameRef = useRef();
     const phoneNumberRef = useRef();
@@ -36,6 +39,7 @@ const ShopForm = ({setVisible}) => {
             return
         }
         makeOrder(items, customerName, phone, details)
+        dispatch(clearCart())
         setVisible(false)
         navigate.push('/')
     }

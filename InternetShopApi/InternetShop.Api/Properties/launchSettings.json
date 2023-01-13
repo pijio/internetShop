@@ -18,8 +18,8 @@
     "InternetShop": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
-      "launchBrowser": true,
-      "applicationUrl": "https://*:5003;http://*:5002",
+      "launchBrowser": false,
+      "applicationUrl": "http://*:5003;http://*:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

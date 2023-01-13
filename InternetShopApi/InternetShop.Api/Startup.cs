@@ -51,7 +51,7 @@ namespace InternetShop.Api
             services.AddSiteApp();
             services.AddCors(o => o.AddPolicy("ShopApiPolicy", builder =>
             {
-                builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+                builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
