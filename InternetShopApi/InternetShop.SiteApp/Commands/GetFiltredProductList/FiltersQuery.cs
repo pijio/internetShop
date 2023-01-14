@@ -20,7 +20,8 @@ namespace InternetShop.SiteApp.Commands.GetFiltredProductList
     public enum OrderedProps : byte
     {
         Rate,
-        Price,
+        PriceDesc,
+        PriceAsc,
         InStock
     }
 }

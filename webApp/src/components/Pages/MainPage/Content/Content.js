@@ -4,10 +4,10 @@ import SortPopUp from "./SortPopUp";
 import './content__next__button.css'
 import {useSelector} from "react-redux";
 
-const sortItems = [{name: "Популярности", type: "popular"}, {name: "Цене", type: "price"}, {
-    name: "Наличию",
-    type: "inStock"
-}];
+const sortItems = [{name: "Популярности", type: "popular"},
+    {name: "Убыванию цены", type: "priceDesc"},
+    {name: "Возрастанию цены", type: "priceAsc"},
+    {name: "Наличию", type: "inStock"}];
 
 const Content = ({items, onClickItem}) => {
 
