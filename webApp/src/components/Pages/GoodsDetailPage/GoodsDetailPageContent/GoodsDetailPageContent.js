@@ -6,7 +6,7 @@ import VideoReview from "./VideoReview/VideoReview";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchGoods} from "../../../../redux/actions/goods";
 
-const GoodsDetailPageContent = ({
+const GoodsDetailPageContent = ({   scrollRef,
                                     name,
                                     key,
                                     videoUrl,
@@ -33,7 +33,7 @@ const GoodsDetailPageContent = ({
     const {sortBy} = useSelector(({filters}) => filters);
     const dispatch = useDispatch();
     const category = key
-
+    const executeScroll = () => scrollRef.current.scrollIntoView()
     useEffect(() => {
         document.body.addEventListener('click', handleOutsideClick);
         document.body.addEventListener('click', handleOutsideClick1);
@@ -54,21 +54,14 @@ const GoodsDetailPageContent = ({
     const onItemClick = (index) => {
         setActive(index);
     }
-    const [contact, setContact] = useState(false);
-    const onContactClick = (index) => {
-        setContact(index);
+    const onContactClick = () => {
+        scrollRef.current.scrollIntoView();
     };
     const handleOutsideClick = (event) => {
         const path = event.path || (event.composedPath && event.composedPath()) || event.composedPath(event.target);
-        if (!path.includes(sortRef.current)) {
-            setContact(false);
-        }
     };
     const handleOutsideClick1 = (event) => {
         const path = event.path || (event.composedPath && event.composedPath()) || event.composedPath(event.target);
-        if (path.includes(sortRef2.current)) {
-            setContact(true);
-        }
     };
     console.log(videoUrl)
 
@@ -93,15 +86,14 @@ const GoodsDetailPageContent = ({
                             <div className="items__title__content">На главную</div>
                         </Link>
 
-                        <div ref={sortRef2} onClick={() => onContactClick(!contact)}
+                        <div ref={sortRef2} onClick={() => onContactClick()}
                              className="items__title__content">Наши контакты
                         </div>
-                        {<Contacts contact={contact} sortRef={sortRef}/>}
                         <div onClick={() => setVideoFalse(!video)} className="items__title__content">Видео-обзор</div>
                         {video ? <VideoReview videoUrl={videoUrl} setVideoFalse={setVideoFalse}/> : ''}
-                        <a href="http://www.shop.IS.kg">
+                        <Link to={'/'}>
                             <div className="items__title__content">Сервисный центр</div>
-                        </a>
+                        </Link>
 
 
                     </div>

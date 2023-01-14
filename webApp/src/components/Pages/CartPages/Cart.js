@@ -33,13 +33,11 @@ const Cart = () => {
             return price+sum
         },0)
     });
-    const renderContacts = () => {
-        return <div className={'footer__contacts'}>
+    const renderFooter = () => {
+        return (<div className={'footer'}>
             <Contacts/>
-        </div>
-    }
-    const renderMaps = () => {
-        return <Maps/>
+            <Maps/>
+        </div>)
     }
     const onRemoveItem = (id)=>{
         if (window.confirm('Вы действительно хотите удалить товар?')){
@@ -139,8 +137,8 @@ const Cart = () => {
                         </div>
                     </div>
                 </div>
-                {modal ? <></> : renderContacts()}
-                {modal ? <></> : renderMaps()}
+
+                {modal ? <></> : renderFooter()}
             </div>
 
         </>

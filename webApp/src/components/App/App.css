@@ -937,6 +937,9 @@ body {
   .button--loggin {
     margin-top: 100px;
   }
+  .footer {
+    flex-direction: column;
+  }
 }
 @media screen and (max-width: 100vw) {
   .header {
@@ -945,9 +948,6 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  .footer {
-    flex-direction: column;
-  }
   .button--cart {
     z-index: 2;
     padding: 5px 10px;
