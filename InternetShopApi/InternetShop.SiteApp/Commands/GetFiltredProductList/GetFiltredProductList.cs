@@ -34,9 +34,7 @@ namespace InternetShop.SiteApp.Commands.GetFiltredProductList
                         : products.OrderBy(x => x.Price)).ToArray();
                     break;
                 case OrderedProps.Rate:
-                    products = (querry.Direction
-                        ? products.OrderByDescending(x => x.Rate)
-                        : products.OrderBy(x => x.Rate)).ToArray();
+                    products = products.OrderByDescending(x => x.Rate).ToArray();
                     break;
             }
             
