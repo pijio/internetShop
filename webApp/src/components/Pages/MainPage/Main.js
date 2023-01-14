@@ -25,10 +25,10 @@ const Main = () => {
                 onClickItem={onSelectedCategory}
                 items={categoryNames}
             />
-            <div className={'footer__contacts'}>
+            <div className={'footer'}>
                 <Contacts/>
+                <Maps/>
             </div>
-            <Maps/>
             <div>{isAuthed===true ? `Выполнен вход как ${username}` : 'Вход не выполнен'}</div>
         </div>
     )

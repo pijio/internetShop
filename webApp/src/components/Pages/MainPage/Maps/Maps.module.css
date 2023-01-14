@@ -1,0 +1,21 @@
+.maps__div {
+    display: flex;
+    justify-content: right;
+}
+
+.maps__div div {
+    border: 15px solid transparent;
+}
+.maps__scale {
+    width: 60vw;
+    height: 500px;
+}
+@media screen and (max-width: 1180px) {
+    .maps__div {
+        justify-content: center;
+
+    }
+    .maps__scale {
+        width: 85vw;
+    }
+}

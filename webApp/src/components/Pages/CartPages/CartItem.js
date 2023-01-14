@@ -36,7 +36,6 @@ const CartItem = ({id,price,name,processor,screen,imageUrl,totalOnePrice,valueOf
             </div>
             <div className="cart__item-info">
                 <h3>{name}</h3>
-                <p>{processor} ,{screen}""</p>
             </div>
             <div className="cart__item-count">
                 <div  onClick={valueOfGoods===1?null:handleMinusItem} className="button button--outline button--circle cart__item-count-minus">
