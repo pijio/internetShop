@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace InternetShop.DAL
+﻿namespace InternetShop.DAL.DomainModels
 {
     public class Category : IBaseEntity
     {

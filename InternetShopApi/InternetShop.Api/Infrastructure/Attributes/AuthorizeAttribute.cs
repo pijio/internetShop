@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using InternetShop.DAL;
+using InternetShop.DAL.DomainModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

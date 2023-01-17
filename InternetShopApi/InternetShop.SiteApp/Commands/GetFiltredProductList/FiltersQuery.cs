@@ -1,4 +1,5 @@
 ﻿using InternetShop.DAL;
+using InternetShop.DAL.DomainModels;
 using MediatR;
 
 namespace InternetShop.SiteApp.Commands.GetFiltredProductList

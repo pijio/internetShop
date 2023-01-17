@@ -1,4 +1,5 @@
 ﻿using InternetShop.DAL;
+using InternetShop.DAL.DomainModels;
 
 namespace InternetShop.Api.Services.AAS
 {

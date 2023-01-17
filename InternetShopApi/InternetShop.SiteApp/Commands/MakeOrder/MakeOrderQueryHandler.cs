@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using InternetShop.DAL;
+using InternetShop.DAL.DomainModels;
 using InternetShop.SiteApp.Commands.OrderCreateNotification;
 using MediatR;
 

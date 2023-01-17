@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using InternetShop.DAL;
+using InternetShop.DAL.DomainModels;
 using InternetShop.SiteApp.Commands.GetProductsList;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,6 @@ namespace InternetShop.SiteApp.Commands.GetFiltredProductList
         {
             var products = (await _uow.GetGenericRepository<Product>().GetAllAsync())
                 .Include(p => p.Category)
-                .Include(p => p.Characteristics)
                 .Include(p => p.AdditInfo)
                 .Include(p => p.ProductType).ToArray();
             switch (querry.Order)

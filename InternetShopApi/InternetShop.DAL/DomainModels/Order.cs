@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InternetShop.DAL
+﻿namespace InternetShop.DAL.DomainModels
 {
     public class Order : IBaseEntity
     {

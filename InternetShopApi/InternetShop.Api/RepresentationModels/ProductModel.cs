@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using InternetShop.DAL;
+using InternetShop.DAL.DomainModels;
 
 namespace InternetShop.Api.RepresentationModels
 {
@@ -23,36 +24,16 @@ namespace InternetShop.Api.RepresentationModels
         public string ImageUrl3 { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonPropertyName("processor")]
-        public string Processor { get; set; }
-        [JsonPropertyName("ram")]
-        public string Ram { get; set; }
-        [JsonPropertyName("screenSizes")]
-        public string ScreenSize { get; set; }
         [JsonPropertyName("price")]
         public double Price { get; set; }
         [JsonPropertyName("category")]
         public string Category { get; set; }
-        [JsonPropertyName("os")]
-        public string Os { get; set; }    
-        [JsonPropertyName("disc")]
-        public string Disc { get; set; }       
         [JsonPropertyName("popular")]
         public int Rate { get; set; }
         [JsonPropertyName("videoUrl")]
         public string VideoUrl { get; set; }
         [JsonPropertyName("title")]
         public string Title { get; set; }
-        [JsonPropertyName("printer_ram")]
-        public string PrinterRam { get; set; }
-        [JsonPropertyName("dpi")]
-        public string Dpi { get; set; }
-        [JsonPropertyName("type")]
-        public string PrinterType { get; set; }
-        [JsonPropertyName("format")]
-        public string Format { get; set; }
-        [JsonPropertyName("ppm")]
-        public string MatrixType { get; set; }
         #endregion
 
         public static explicit operator ProductModel(Product product)
@@ -71,21 +52,6 @@ namespace InternetShop.Api.RepresentationModels
             }
 
             model.Name = product.Name;
-            if (product.Characteristics != null)
-            {
-                model.Processor = product.Characteristics.Processor;
-                model.Os = product.Characteristics.Os;
-                model.Ram = product.Characteristics.Ram ?? "";
-                model.ScreenSize = product.Characteristics.ScreenSize.HasValue
-                    ? $"{product.Characteristics.ScreenSize}'"
-                    : "";
-                model.Format = product.Characteristics.Format ?? "";
-                model.PrinterRam = product.Characteristics.PrinterRam ?? "";
-                model.PrinterType = product.Characteristics.PrinterType ?? "";
-                model.MatrixType = product.Characteristics.MatrixType ?? "";
-                model.Dpi = product.Characteristics.Dpi ?? "";
-                model.Disc = product.Characteristics.DiscVolAndType;
-            }
             model.Price = product.Price;
             model.Category = product.Category != null ? product.Category.CategoryName : "";
             model.Rate = (int)product.Rate;

@@ -1,4 +1,4 @@
-﻿namespace InternetShop.DAL
+﻿namespace InternetShop.DAL.DomainModels
 {
     public class ProductType
     {

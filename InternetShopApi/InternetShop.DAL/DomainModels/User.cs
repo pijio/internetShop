@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace InternetShop.DAL
+namespace InternetShop.DAL.DomainModels
 {
     public class User : IBaseEntity
     {
