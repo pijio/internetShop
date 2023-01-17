@@ -27,15 +27,14 @@ namespace InternetShop.SiteApp.Commands.GetFiltredProductList
                 case OrderedProps.InStock:
                     products = products.Where(x => x.InStock).ToArray();
                     break;
-                case OrderedProps.Price:
-                    products = (querry.Direction
+                case OrderedProps.PriceAsc:
+                case OrderedProps.PriceDesc:
+                    products = (querry.Order==OrderedProps.PriceDesc 
                         ? products.OrderByDescending(x => x.Price)
                         : products.OrderBy(x => x.Price)).ToArray();
                     break;
                 case OrderedProps.Rate:
-                    products = (querry.Direction
-                        ? products.OrderByDescending(x => x.Rate)
-                        : products.OrderBy(x => x.Rate)).ToArray();
+                    products = products.OrderByDescending(x => x.Rate).ToArray();
                     break;
             }
             

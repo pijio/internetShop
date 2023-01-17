@@ -1,7 +1,6 @@
 import './Contacts.css'
 const Contacts = ({sortRef,contact})=>{
     return (
-        <>
             <div  ref={sortRef}  className={contact===false?'contact__block':'contact__block active__contact'}>
                 <h2 className={'contact__us'}>Связаться с нами</h2>
                 <div className={'contact__infoblock'}>
@@ -21,7 +20,6 @@ const Contacts = ({sortRef,contact})=>{
                     <h4> <span className={'span__bold'}>О нас:</span> <a href="#">больше информации по ссылке</a></h4>
                 </div>
             </div>
-        </>
     )
 }
 export default Contacts

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import {YMaps, Map, Placemark, FullscreenControl} from "react-yandex-maps";
-import './Maps.css'
+import styles from './Maps.module.css'
 
 const Maps = () => {
         const mapData = {
@@ -14,16 +14,14 @@ const Maps = () => {
             // await fetch
             setCoord([[42.874662, 74.638519]])
         }
-
+        const [width, setWidth] = useState('500px')
         useEffect(() => {
             loadData()
         }, [])
-
         return (
             <div className={'maps__div'}>
                 <YMaps>
-                    <Map width='50%'
-                         height='500px'
+                    <Map className={styles.maps__scale}
                          defaultState={mapData}>
                         {coordinates.map(coordinate => <Placemark options={{
                             iconLayout: 'default#image',

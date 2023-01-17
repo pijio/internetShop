@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Header from "../MainPage/Header";
 import Slider from "../MainPage/Slider/Slider";
 import Maps from "../MainPage/Maps";
@@ -18,7 +18,7 @@ const GoodsDetailPage = () => {
         window.scrollTo(500, 500)
         dispatch(fetchGoods())
     }, [])
-
+    const scrollRef = useRef(null)
     return (
         <>
 
@@ -29,12 +29,12 @@ const GoodsDetailPage = () => {
                     return item.id === detail
                 }).map((obj) => (
 
-                    <GoodsDetailPageContent key={obj.id} {...obj}/>
+                    <GoodsDetailPageContent key={obj.id} scrollRef={scrollRef} {...obj}/>
                 ))}
-                <div className={'footer__contacts'}>
+                <div className={'footer'} ref={scrollRef}>
                     <Contacts/>
+                    <Maps/>
                 </div>
-                <Maps/>
             </div>
 
         </>

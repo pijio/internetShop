@@ -318,7 +318,7 @@ a {
   border-radius: 10px;
   overflow: hidden;
   padding: 10px 0;
-  width: 160px
+  width: 180px
 }
 
 .sort__popup ul {
@@ -874,7 +874,13 @@ body {
 }
 
 /*адаптивка*/
-
+.footer {
+  border-top: 40px solid #4169E1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20px;
+}
 @media screen and (max-width: 1180px) {
   .content__top {
     display: inline-block;
@@ -931,8 +937,10 @@ body {
   .button--loggin {
     margin-top: 100px;
   }
+  .footer {
+    flex-direction: column;
+  }
 }
-
 @media screen and (max-width: 100vw) {
   .header {
     height: 350px;
@@ -940,7 +948,6 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-
   .button--cart {
     z-index: 2;
     padding: 5px 10px;
@@ -952,5 +959,12 @@ body {
   }
   .button--loggin {
     margin-top: 100px;
+  }
+  .cart__item {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cart__item-count {
+    width: 30%;
   }
 }

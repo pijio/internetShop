@@ -48,10 +48,10 @@ const ErrorPage = ({errormsg}) => {
                     </div>
                 </div>
             </div>
-            <div className={'footer__contacts'}>
+            <div className={'footer'}>
                 <Contacts/>
+                <Maps/>
             </div>
-            <Maps/>
         </div>
     )
 }
