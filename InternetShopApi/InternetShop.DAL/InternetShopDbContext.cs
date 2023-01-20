@@ -40,7 +40,7 @@ namespace InternetShop.DAL
                 .HasForeignKey(d => d.ProductId)
                 .IsRequired();
             builder.Entity<Characteristic>().HasKey(k => new { k.Id });
-            builder.Entity<ProductCharacteristic>().HasKey(k => new { k.ProductId, k.Characteristic });
+            builder.Entity<ProductCharacteristic>().HasKey(k => new { k.ProductId, k.CharacteristicId });
             builder.Entity<ProductCharacteristic>()
                 .HasOne(pc => pc.Product)
                 .WithMany(p => p.ProductCharacteristics)
